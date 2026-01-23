@@ -1,28 +1,8 @@
 [
   {
-    "name": "ToetsPrepper",
-    "description": "Moodle Chrome extensie.",
-    "url": "./PROGPROJECTS/ToetsPrepper/toetsprepper.code-workspace",
-    "tags": [
-      "Moodle",
-      "Chrome Extension"
-    ],
-    "status": "experimenteel"
-  },
-  {
     "name": "MassBijlageDownloader",
     "description": "Browser extensie om snel alle bijlagen bij een (moodle/toets.ap)-examenvrag te downloaden en hernoemen.",
     "url": ".https://github.com/timdams/MassTestBijlageDownloader",
-    "tags": [
-      "Moodle",
-      "Chrome Extension"
-    ],
-    "status": "beta"
-  },
-  {
-    "name": "MoodleEvalHelper",
-    "description": "Moodle Chrome extensie.",
-    "url": "./PROGPROJECTS/MoodleEvalHelper/moodleevalhelper.code-workspace",
     "tags": [
       "Moodle",
       "Chrome Extension"
