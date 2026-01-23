@@ -1,0 +1,20 @@
+[
+  {
+    "name": "TimsTools",
+    "description": "De centrale hub voor al mijn tools en projecten. Je kijkt er nu naar!",
+    "url": "https://github.com/timdams/TimsTools",
+    "tags": ["Hub", "Web"]
+  },
+  {
+    "name": "ECTS Farmer",
+    "description": "Tool voor het beheren en berekenen van ECTS fiches en studietijd.",
+    "url": "#",
+    "tags": ["Education", "Management"]
+  },
+  {
+    "name": "LogicFlow",
+    "description": "Een eenvoudige tool om logische flows te visualiseren.",
+    "url": "#",
+    "tags": ["Visualisation", "Dev"]
+  }
+]
