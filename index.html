@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <meta name="description" content="Overzicht van tools ontwikkeld en onderhouden door Tim Dams.">
 </head>
+
 <body>
     <header>
         <h1>TimsTools</h1>
@@ -19,50 +21,59 @@
 
     <footer>
         &copy; <span id="year"></span> Tim Dams. All rights reserved.
-    </header>
+        </header>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
 
-        async function loadTools() {
-            try {
-                const response = await fetch('tools.json');
-                const tools = await response.json();
-                const container = document.getElementById('tools-container');
+            async function loadTools() {
+                try {
+                    const response = await fetch('tools.json');
+                    const tools = await response.json();
+                    const container = document.getElementById('tools-container');
 
-                tools.forEach(tool => {
-                    const card = document.createElement('a');
-                    card.className = 'card';
-                    card.href = tool.url;
-                    
-                    // Open external links in new tab unless it's just a hash
-                    if(tool.url && !tool.url.startsWith('#')) {
-                        card.target = "_blank";
-                        card.rel = "noopener noreferrer";
-                    }
+                    tools.forEach(tool => {
+                        const card = document.createElement('a');
+                        card.className = 'card';
+                        card.href = tool.url;
 
-                    let tagsHtml = '';
-                    if (tool.tags && tool.tags.length > 0) {
-                        tagsHtml = `<div class="tags">
+                        // Open external links in new tab unless it's just a hash
+                        if (tool.url && !tool.url.startsWith('#')) {
+                            card.target = "_blank";
+                            card.rel = "noopener noreferrer";
+                        }
+
+                        let tagsHtml = '';
+                        if (tool.tags && tool.tags.length > 0) {
+                            tagsHtml = `<div class="tags">
                             ${tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                         </div>`;
-                    }
+                        }
 
-                    card.innerHTML = `
-                        <div class="card-title">${tool.name}</div>
+                        let statusHtml = '';
+                        if (tool.status) {
+                            statusHtml = `<span class="status-badge status-${tool.status.toLowerCase()}">${tool.status}</span>`;
+                        }
+
+                        card.innerHTML = `
+                        <div class="card-header">
+                            <div class="card-title">${tool.name}</div>
+                            ${statusHtml}
+                        </div>
                         <div class="card-desc">${tool.description}</div>
                         ${tagsHtml}
                     `;
-                    container.appendChild(card);
-                });
-            } catch (error) {
-                console.error('Error loading tools:', error);
-                document.getElementById('tools-container').innerHTML = 
-                    '<p style="text-align:center; width:100%;">Kon tools niet laden.</p>';
+                        container.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error('Error loading tools:', error);
+                    document.getElementById('tools-container').innerHTML =
+                        '<p style="text-align:center; width:100%;">Kon tools niet laden.</p>';
+                }
             }
-        }
 
-        loadTools();
-    </script>
+            loadTools();
+        </script>
 </body>
+
 </html>

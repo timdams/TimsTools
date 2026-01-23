@@ -1,20 +1,71 @@
 [
   {
-    "name": "TimsTools",
-    "description": "De centrale hub voor al mijn tools en projecten. Je kijkt er nu naar!",
-    "url": "https://github.com/timdams/TimsTools",
-    "tags": ["Hub", "Web"]
+    "name": "ToetsPrepper",
+    "description": "Moodle Chrome extensie.",
+    "url": "./PROGPROJECTS/ToetsPrepper/toetsprepper.code-workspace",
+    "tags": [
+      "Moodle",
+      "Chrome Extension"
+    ],
+    "status": "experimenteel"
   },
   {
-    "name": "ECTS Farmer",
-    "description": "Tool voor het beheren en berekenen van ECTS fiches en studietijd.",
-    "url": "#",
-    "tags": ["Education", "Management"]
+    "name": "MassBijlageDownloader",
+    "description": "Browser extensie om snel alle bijlagen bij een (moodle/toets.ap)-examenvrag te downloaden en hernoemen.",
+    "url": ".https://github.com/timdams/MassTestBijlageDownloader",
+    "tags": [
+      "Moodle",
+      "Chrome Extension"
+    ],
+    "status": "beta"
   },
   {
-    "name": "LogicFlow",
-    "description": "Een eenvoudige tool om logische flows te visualiseren.",
-    "url": "#",
-    "tags": ["Visualisation", "Dev"]
+    "name": "MoodleEvalHelper",
+    "description": "Moodle Chrome extensie.",
+    "url": "./PROGPROJECTS/MoodleEvalHelper/moodleevalhelper.code-workspace",
+    "tags": [
+      "Moodle",
+      "Chrome Extension"
+    ],
+    "status": "beta"
+  },
+  {
+    "name": "iBamaflexPuntenImporter",
+    "description": "Browser extensie om snel je punten vanuit een excel in je ibamaflex puntenlijst te importeren.",
+    "url": "https://github.com/timdams/ibamaflexPuntenImporter",
+    "tags": [
+      "Ibamaflex",
+      "Chrome Extension"
+    ],
+    "status": "beta"
+  },
+  {
+    "name": "Untisbrowser",
+    "description": "Je untis rooster on steroids. Een snellere manier om roosters te bekijken, lessen herin te plannen en te zoeken wat een goed moment is voor een meeting.",
+    "url": "https://github.com/timdams/UntisBrowserRelease/releases",
+    "tags": [
+      "Untis",
+      "WPF"
+    ],
+    "status": "klaar"
+  },
+  {
+    "name": "Examonbrowser (aka Timspector 2026)",
+    "description": "Examon WPF browser tool voor geavanceerde analyse en beheer en rapportage",
+    "url": "https://github.com/timdams/examonbrowser/releases/",
+    "tags": [
+      "Examon",
+      "WPF"
+    ],
+    "status": "klaar"
+  },
+  {
+    "name": "Bulk EPC generator",
+    "description": "Applicatie om EPC/SEPA betaalketen QR-codes te genereren,al dan niet in bulk.",
+    "url": "https://github.com/timdams/BulkEPC-QRcodegenerator",
+    "tags": [
+      "Scripts"
+    ],
+    "status": "klaar"
   }
 ]
