@@ -46,6 +46,21 @@
                 const container = document.getElementById('tools-container');
                 const filterContainer = document.getElementById('filter-container');
 
+                // Favorites logic
+                let favorites = JSON.parse(localStorage.getItem('timsTools_favorites') || '[]');
+                function toggleFavorite(toolName, event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const index = favorites.indexOf(toolName);
+                    if (index > -1) {
+                        favorites.splice(index, 1);
+                    } else {
+                        favorites.push(toolName);
+                    }
+                    localStorage.setItem('timsTools_favorites', JSON.stringify(favorites));
+                    renderTools();
+                }
+
                 let allTags = new Set();
                 tools.forEach(tool => {
                     if (tool.tags) {
@@ -55,6 +70,7 @@
 
                 let selectedTags = new Set();
                 let showAlfa = false;
+                let showFavoritesOnly = false;
 
                 const viewToggleBtn = document.getElementById('view-toggle-btn');
                 viewToggleBtn.onclick = () => {
@@ -68,6 +84,18 @@
                     }
                     renderTools();
                 };
+
+                // Add Favorites Filter
+                const favFilterBtn = document.createElement('button');
+                favFilterBtn.className = 'filter-btn';
+                favFilterBtn.innerHTML = '⭐ favorieten';
+                favFilterBtn.style.borderColor = '#fbbf24';
+                favFilterBtn.onclick = () => {
+                    showFavoritesOnly = !showFavoritesOnly;
+                    favFilterBtn.classList.toggle('active');
+                    renderTools();
+                };
+                filterContainer.appendChild(favFilterBtn);
 
                 // Render filters
                 allTags.forEach(tag => {
@@ -97,6 +125,8 @@
                     };
 
                     const filteredTools = tools.filter(tool => {
+                        if (showFavoritesOnly && !favorites.includes(tool.name)) return false;
+
                         const isAlfa = (tool.status || '').toLowerCase() === 'alfa';
                         if (showAlfa && !isAlfa) return false;
                         if (!showAlfa && isAlfa) return false;
@@ -104,9 +134,14 @@
                         if (selectedTags.size === 0) return true;
                         if (!tool.tags) return false;
 
-                        // Return true if tool has ANY of the selected tags (ANY logic)
                         return Array.from(selectedTags).some(tag => tool.tags.includes(tag));
                     }).sort((a, b) => {
+                        // Priority for favorites
+                        const isFavA = favorites.includes(a.name);
+                        const isFavB = favorites.includes(b.name);
+                        if (isFavA && !isFavB) return -1;
+                        if (!isFavA && isFavB) return 1;
+
                         const priorityA = statusPriority[(a.status || '').toLowerCase()] || 99;
                         const priorityB = statusPriority[(b.status || '').toLowerCase()] || 99;
                         return priorityA - priorityB;
@@ -117,7 +152,6 @@
                         card.className = 'card';
                         card.href = tool.url;
 
-                        // Open external links in new tab unless it's just a hash
                         if (tool.url && !tool.url.startsWith('#')) {
                             card.target = "_blank";
                             card.rel = "noopener noreferrer";
@@ -135,19 +169,33 @@
                             statusHtml = `<span class="status-badge status-${tool.status.toLowerCase()}">${tool.status}</span>`;
                         }
 
+                        const isFav = favorites.includes(tool.name);
+
                         card.innerHTML = `
                             <div class="card-header">
                                 <div class="card-title">${tool.name}</div>
-                                ${statusHtml}
+                                <button class="fav-btn ${isFav ? 'active' : ''}" title="Boekmarken">
+                                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                </button>
                             </div>
                             <div class="card-desc">${tool.description}</div>
-                            ${tagsHtml}
+                            <div style="display:flex; justify-content: space-between; align-items: flex-end; margin-top: auto;">
+                                ${tagsHtml}
+                                ${statusHtml}
+                            </div>
                         `;
+
+                        // Handle favorite click
+                        const favBtn = card.querySelector('.fav-btn');
+                        favBtn.onclick = (e) => toggleFavorite(tool.name, e);
+
                         container.appendChild(card);
                     });
 
                     if (filteredTools.length === 0) {
-                        container.innerHTML = '<p style="text-align:center; width:100%; grid-column: 1 / -1;">Geen tools gevonden met de geselecteerde tags.</p>';
+                        container.innerHTML = `<p style="text-align:center; width:100%; grid-column: 1 / -1;">
+                            ${showFavoritesOnly ? 'Geen favorieten gevonden.' : 'Geen tools gevonden met de geselecteerde filters.'}
+                        </p>`;
                     }
                 }
 
