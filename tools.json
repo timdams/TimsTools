@@ -66,16 +66,6 @@
     "status": "klaar"
   },
   {
-    "name": "🪙Bulk EPC generator",
-    "description": "Applicatie om EPC/SEPA betaalketen QR-codes te genereren,al dan niet in bulk.",
-    "url": "https://github.com/timdams/BulkEPC-QRcodegenerator",
-    "tags": [
-      "WPF",
-      "Prive"
-    ],
-    "status": "klaar"
-  },
-  {
     "name": "🏫 Examenvoorstel rooster visualizer",
     "description": "Webapp om de examenrooster excel te visualiseren.",
     "url": "https://timdams.github.io/PreRoosterVis/",
@@ -117,5 +107,25 @@
       "AP"
     ],
     "status": "alfa"
-  }
+  },
+  {
+    "name": "Toetstester",
+    "description": "Oude applicatie om te onderzoeken of je toets betrouwbaar is.",
+    "url": "https://github.com/AP-IT-GH/APToetsTester",
+    "tags": [
+      "WPF",
+      "AP"
+    ],
+    "status": "klaar"
+  },
+  {
+    "name": "🪙Bulk EPC generator",
+    "description": "Applicatie om EPC/SEPA betaalketen QR-codes te genereren,al dan niet in bulk.",
+    "url": "https://github.com/timdams/BulkEPC-QRcodegenerator",
+    "tags": [
+      "WPF",
+      "Prive"
+    ],
+    "status": "klaar"
+  },
 ]
