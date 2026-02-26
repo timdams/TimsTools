@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimsTools - Tool Viewer</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Detailweergave van een tool of script ontwikkeld door Tim Dams.">
+    <!-- Load marked.js to parse markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Load DOMPurify to sanitize HTML output -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1 id="tool-title">Laden...</h1>
+        <p class="subtitle" id="tool-subtitle">Een moment geduld aub</p>
+    </header>
+
+    <div class="disclaimer">
+        Wil je meewerken aan bepaalde toets? Tools in ontwikkeling testen? Ideeën voor nieuwe of bestaande tools? <br>
+        <strong>Aarzel niet mij te contacteren.</strong>
+    </div>
+
+    <main id="tool-content-container" class="tool-content-container">
+        <div class="card" style="width: 100%; max-width: 800px; margin: 0 auto;">
+            <div id="markdown-content" class="markdown-body">
+                <!-- Parsed markdown will be injected here -->
+            </div>
+
+            <div
+                style="margin-top: 2rem; border-top: 1px solid var(--card-border); padding-top: 1rem; text-align: center;">
+                <a href="index.html" class="filter-btn" style="display: inline-block; text-decoration: none;">&larr;
+                    Terug naar overzicht</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; <span id="year"></span> Tim Dams. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        async function loadToolContent() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const fileUrl = urlParams.get('file');
+
+            if (!fileUrl) {
+                showError("Geen bestand gespecifieerd in de URL.");
+                return;
+            }
+
+            try {
+                // Fetch the markdown file
+                const response = await fetch(fileUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const markdownText = await response.text();
+
+                // Fetch tools.json to get metadata if possible
+                let toolMetadata = null;
+                try {
+                    const toolsResponse = await fetch('tools.json');
+                    if (toolsResponse.ok) {
+                        const tools = await toolsResponse.json();
+                        // Try to find the tool by matching the URL parameter
+                        toolMetadata = tools.find(t => t.url.includes(encodeURI(fileUrl)) || t.url.includes(fileUrl));
+                    }
+                } catch (e) {
+                    console.warn("Could not load tools.json for metadata", e);
+                }
+
+                if (toolMetadata) {
+                    document.getElementById('tool-title').textContent = toolMetadata.name;
+                    document.getElementById('tool-subtitle').textContent = toolMetadata.description;
+                    document.title = `TimsTools - ${toolMetadata.name}`;
+                } else {
+                    // Fallback title from filename
+                    const fileName = fileUrl.split('/').pop().replace('.md', '');
+                    document.getElementById('tool-title').textContent = decodeURIComponent(fileName);
+                    document.getElementById('tool-subtitle').textContent = "Script / Tool";
+                    document.title = `TimsTools - ${decodeURIComponent(fileName)}`;
+                }
+
+                // Omdat we soms per ongeluk ´´´ hebben getypt in de markdown ipv de standaard ``` backticks, 
+                // vervangen we dit eerst zodat marked.js het netjes als codeblok (puur tekst) parseert.
+                const correctedMarkdown = markdownText.replace(/´´´/g, '```');
+
+                // Parse and sanitize markdown
+                const rawHtml = marked.parse(correctedMarkdown);
+                const safeHtml = DOMPurify.sanitize(rawHtml);
+
+                document.getElementById('markdown-content').innerHTML = safeHtml;
+
+            } catch (error) {
+                console.error('Error loading markdown file:', error);
+                showError(`Kon het bestand niet laden: ${fileUrl}`);
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('tool-title').textContent = "Fout";
+            document.getElementById('tool-subtitle').textContent = "Bestand niet gevonden";
+            document.getElementById('markdown-content').innerHTML = `<p style="color: #ef4444; font-weight: bold;">${message}</p>`;
+        }
+
+        loadToolContent();
+    </script>
+</body>
+
+</html>

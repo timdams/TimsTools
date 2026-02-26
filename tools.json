@@ -1,51 +1,121 @@
 [
   {
-    "name": "MassBijlageDownloader",
+    "name": "📚 MassBijlageDownloader",
     "description": "Browser extensie om snel alle bijlagen bij een (moodle/toets.ap)-examenvrag te downloaden en hernoemen.",
-    "url": ".https://github.com/timdams/MassTestBijlageDownloader",
+    "url": "https://github.com/timdams/MassTestBijlageDownloader",
     "tags": [
       "Moodle",
-      "Chrome Extension"
+      "Chrome Extension",
+      "AP"
     ],
-    "status": "beta"
+    "status": "Klaar"
   },
   {
-    "name": "iBamaflexPuntenImporter",
+    "name": "🔢 iBamaflexPuntenImporter",
     "description": "Browser extensie om snel je punten vanuit een excel in je ibamaflex puntenlijst te importeren.",
     "url": "https://github.com/timdams/ibamaflexPuntenImporter",
     "tags": [
       "Ibamaflex",
-      "Chrome Extension"
-    ],
-    "status": "beta"
-  },
-  {
-    "name": "Untisbrowser",
-    "description": "Je untis rooster on steroids. Een snellere manier om roosters te bekijken, lessen herin te plannen en te zoeken wat een goed moment is voor een meeting.",
-    "url": "https://github.com/timdams/UntisBrowserRelease/releases",
-    "tags": [
-      "Untis",
-      "WPF"
+      "Chrome Extension",
+      "AP"
     ],
     "status": "klaar"
   },
   {
-    "name": "Examonbrowser (aka Timspector 2026)",
+    "name": "📗 Untisbrowser",
+    "description": "Je untis rooster on steroids. Een snellere manier om roosters te bekijken, lessen herin te plannen en te zoeken wat een goed moment is voor een meeting.",
+    "url": "https://github.com/timdams/UntisBrowserRelease",
+    "tags": [
+      "Untis",
+      "WPF",
+      "AP"
+    ],
+    "status": "klaar"
+  },
+  {
+    "name": "🔎 Examonbrowser (aka Timspector 2026)",
     "description": "Examon WPF browser tool voor geavanceerde analyse en beheer en rapportage",
     "url": "https://github.com/timdams/examonbrowser/releases/",
     "tags": [
       "Examon",
-      "WPF"
+      "WPF",
+      "AP"
     ],
     "status": "klaar"
   },
   {
-    "name": "Bulk EPC generator",
+    "name": "💯Wordcounter bij toetsvragen",
+    "description": "Javascript code voor een essay vraag in Toets.AP of Moodle met een live woordenteller.",
+    "url": "tool.html?file=scripttools/wordcounter%20in%20toets.md",
+    "tags": [
+      "Moodle",
+      "AP",
+      "Snippet"
+    ],
+    "status": "klaar"
+  },
+  {
+    "name": "📝Kladblok bij toetsvragen",
+    "description": "HTML snippet voor een kladblok veld waarbij de inhoud niet wordt bewaard.",
+    "url": "tool.html?file=scripttools/tekstblok%20in%20toets.md",
+    "tags": [
+      "Moodle",
+      "AP",
+      "Snippet"
+    ],
+    "status": "klaar"
+  },
+  {
+    "name": "🪙Bulk EPC generator",
     "description": "Applicatie om EPC/SEPA betaalketen QR-codes te genereren,al dan niet in bulk.",
     "url": "https://github.com/timdams/BulkEPC-QRcodegenerator",
     "tags": [
-      "Scripts"
+      "WPF",
+      "Prive"
     ],
     "status": "klaar"
+  },
+  {
+    "name": "🏫 Examenvoorstel rooster visualizer",
+    "description": "Webapp om de examenrooster excel te visualiseren.",
+    "url": "https://timdams.github.io/PreRoosterVis/",
+    "tags": [
+      "Untis",
+      "Webapp",
+      "AP"
+    ],
+    "status": "klaar"
+  },
+  {
+    "name": "🤖 Toetsprepper",
+    "description": "Chrome extensie die je hebt om een toets.ap.be test automatisch klaar te zetten",
+    "url": "tool.html?file=inontwikkeling/toetsprepper.md",
+    "tags": [
+      "Moodle",
+      "Chrome Extension",
+      "AP"
+    ],
+    "status": "alfa"
+  },
+  {
+    "name": "🎤 Trajectgesprek capturer",
+    "description": "Een Windows-desktopapplicatie om trajectgesprekken te capteren, verwerken en samenvatten",
+    "url": "tool.html?file=inontwikkeling/tbgesprakcapture.md",
+    "tags": [
+      "AI",
+      "WPF ",
+      "AP"
+    ],
+    "status": "alfa"
+  },
+  {
+    "name": "🎮 Zie Scherpst - Gamefied C# ",
+    "description": "Een interactief online leerplatform voor C# met gamification-elementen.",
+    "url": "tool.html?file=inontwikkeling/ziescherpst.md",
+    "tags": [
+      "Webapp",
+      "AP"
+    ],
+    "status": "alfa"
   }
 ]

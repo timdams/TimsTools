@@ -15,24 +15,104 @@
         <p class="subtitle">Een overzicht van mijn projecten en tools</p>
     </header>
 
+    <div class="disclaimer">
+        Wil je meewerken aan bepaalde toets? Tools in ontwikkeling testen? Ideeën voor nieuwe of bestaande tools? <br>
+        <strong>Aarzel niet mij te contacteren.</strong>
+    </div>
+
+    <div class="view-toggle-container">
+        <button id="view-toggle-btn" class="toggle-btn">In ontwikkeling / Ideeën</button>
+    </div>
+
+    <div id="filter-container" class="filter-container">
+        <!-- Filter tags will be loaded here -->
+    </div>
+
     <main id="tools-container">
         <!-- Tools will be loaded here via JS -->
     </main>
 
     <footer>
         &copy; <span id="year"></span> Tim Dams. All rights reserved.
-        </header>
+    </footer>
 
-        <script>
-            document.getElementById('year').textContent = new Date().getFullYear();
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-            async function loadTools() {
-                try {
-                    const response = await fetch('tools.json');
-                    const tools = await response.json();
-                    const container = document.getElementById('tools-container');
+        async function loadTools() {
+            try {
+                const response = await fetch('tools.json');
+                const tools = await response.json();
+                const container = document.getElementById('tools-container');
+                const filterContainer = document.getElementById('filter-container');
 
-                    tools.forEach(tool => {
+                let allTags = new Set();
+                tools.forEach(tool => {
+                    if (tool.tags) {
+                        tool.tags.forEach(tag => allTags.add(tag));
+                    }
+                });
+
+                let selectedTags = new Set();
+                let showAlfa = false;
+
+                const viewToggleBtn = document.getElementById('view-toggle-btn');
+                viewToggleBtn.onclick = () => {
+                    showAlfa = !showAlfa;
+                    if (showAlfa) {
+                        viewToggleBtn.classList.add('active');
+                        viewToggleBtn.textContent = 'Toon Klare / Beta Tools';
+                    } else {
+                        viewToggleBtn.classList.remove('active');
+                        viewToggleBtn.textContent = 'In ontwikkeling / Ideeën';
+                    }
+                    renderTools();
+                };
+
+                // Render filters
+                allTags.forEach(tag => {
+                    const filterBtn = document.createElement('button');
+                    filterBtn.className = 'filter-btn';
+                    filterBtn.textContent = tag;
+                    filterBtn.onclick = () => {
+                        if (selectedTags.has(tag)) {
+                            selectedTags.delete(tag);
+                            filterBtn.classList.remove('active');
+                        } else {
+                            selectedTags.add(tag);
+                            filterBtn.classList.add('active');
+                        }
+                        renderTools();
+                    };
+                    filterContainer.appendChild(filterBtn);
+                });
+
+                function renderTools() {
+                    container.innerHTML = '';
+
+                    const statusPriority = {
+                        'klaar': 1,
+                        'beta': 2,
+                        'experimenteel': 3
+                    };
+
+                    const filteredTools = tools.filter(tool => {
+                        const isAlfa = (tool.status || '').toLowerCase() === 'alfa';
+                        if (showAlfa && !isAlfa) return false;
+                        if (!showAlfa && isAlfa) return false;
+
+                        if (selectedTags.size === 0) return true;
+                        if (!tool.tags) return false;
+
+                        // Return true if tool has ANY of the selected tags (ANY logic)
+                        return Array.from(selectedTags).some(tag => tool.tags.includes(tag));
+                    }).sort((a, b) => {
+                        const priorityA = statusPriority[(a.status || '').toLowerCase()] || 99;
+                        const priorityB = statusPriority[(b.status || '').toLowerCase()] || 99;
+                        return priorityA - priorityB;
+                    });
+
+                    filteredTools.forEach(tool => {
                         const card = document.createElement('a');
                         card.className = 'card';
                         card.href = tool.url;
@@ -46,8 +126,8 @@
                         let tagsHtml = '';
                         if (tool.tags && tool.tags.length > 0) {
                             tagsHtml = `<div class="tags">
-                            ${tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                        </div>`;
+                                ${tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>`;
                         }
 
                         let statusHtml = '';
@@ -56,24 +136,31 @@
                         }
 
                         card.innerHTML = `
-                        <div class="card-header">
-                            <div class="card-title">${tool.name}</div>
-                            ${statusHtml}
-                        </div>
-                        <div class="card-desc">${tool.description}</div>
-                        ${tagsHtml}
-                    `;
+                            <div class="card-header">
+                                <div class="card-title">${tool.name}</div>
+                                ${statusHtml}
+                            </div>
+                            <div class="card-desc">${tool.description}</div>
+                            ${tagsHtml}
+                        `;
                         container.appendChild(card);
                     });
-                } catch (error) {
-                    console.error('Error loading tools:', error);
-                    document.getElementById('tools-container').innerHTML =
-                        '<p style="text-align:center; width:100%;">Kon tools niet laden.</p>';
-                }
-            }
 
-            loadTools();
-        </script>
+                    if (filteredTools.length === 0) {
+                        container.innerHTML = '<p style="text-align:center; width:100%; grid-column: 1 / -1;">Geen tools gevonden met de geselecteerde tags.</p>';
+                    }
+                }
+
+                renderTools();
+            } catch (error) {
+                console.error('Error loading tools:', error);
+                document.getElementById('tools-container').innerHTML =
+                    '<p style="text-align:center; width:100%; grid-column: 1 / -1;">Kon tools niet laden.</p>';
+            }
+        }
+
+        loadTools();
+    </script>
 </body>
 
 </html>
