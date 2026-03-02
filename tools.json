@@ -2,7 +2,7 @@
   {
     "name": "📚 MassBijlageDownloader",
     "description": "Browser extensie om snel alle bijlagen bij een (moodle/toets.ap)-examenvrag te downloaden en hernoemen.",
-    "url": "https://github.com/timdams/MassTestBijlageDownloader",
+    "url": "tool.html?file=projects/massbijlagedownloader.md",
     "tags": [
       "Moodle",
       "Chrome Extension",
@@ -13,7 +13,7 @@
   {
     "name": "🔢 iBamaflexPuntenImporter",
     "description": "Browser extensie om snel je punten vanuit een excel in je ibamaflex puntenlijst te importeren.",
-    "url": "https://github.com/timdams/ibamaflexPuntenImporter",
+    "url": "tool.html?file=projects/ibamaflexpuntenimporter.md",
     "tags": [
       "Ibamaflex",
       "Chrome Extension",
@@ -24,7 +24,7 @@
   {
     "name": "📗 Untisbrowser",
     "description": "Je untis rooster on steroids. Een snellere manier om roosters te bekijken, lessen herin te plannen en te zoeken wat een goed moment is voor een meeting.",
-    "url": "https://github.com/timdams/UntisBrowserRelease",
+    "url": "tool.html?file=projects/untisbrowser.md",
     "tags": [
       "Untis",
       "WPF",
@@ -35,7 +35,7 @@
   {
     "name": "🔎 Examonbrowser (aka Timspector 2026)",
     "description": "Examon WPF browser tool voor geavanceerde analyse en beheer en rapportage",
-    "url": "https://github.com/timdams/examonbrowser/releases/",
+    "url": "tool.html?file=projects/examonbrowser.md",
     "tags": [
       "Examon",
       "WPF",
@@ -68,7 +68,7 @@
   {
     "name": "🏫 Examenvoorstel rooster visualizer",
     "description": "Webapp om de examenrooster excel te visualiseren.",
-    "url": "https://timdams.github.io/PreRoosterVis/",
+    "url": "tool.html?file=projects/examenvoorstel-rooster-visualizer.md",
     "tags": [
       "Untis",
       "Webapp",
@@ -111,7 +111,7 @@
   {
     "name": "Toetstester",
     "description": "Oude applicatie om te onderzoeken of je toets betrouwbaar is.",
-    "url": "https://github.com/AP-IT-GH/APToetsTester",
+    "url": "tool.html?file=projects/toetstester.md",
     "tags": [
       "WPF",
       "AP"
@@ -121,7 +121,7 @@
   {
     "name": "🪙Bulk EPC generator",
     "description": "Applicatie om EPC/SEPA betaalketen QR-codes te genereren,al dan niet in bulk.",
-    "url": "https://github.com/timdams/BulkEPC-QRcodegenerator",
+    "url": "tool.html?file=projects/bulk-epc-generator.md",
     "tags": [
       "WPF",
       "Prive"
