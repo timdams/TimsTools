@@ -16,12 +16,8 @@
     </header>
 
     <div class="disclaimer">
-        Wil je meewerken aan bepaalde toets? Tools in ontwikkeling testen? Ideeën voor nieuwe of bestaande tools? <br>
+        Wil je meewerken aan bepaalde tool? Tools in ontwikkeling testen? Ideeën voor nieuwe of bestaande tools? <br>
         <strong>Aarzel niet mij te contacteren.</strong>
-    </div>
-
-    <div class="view-toggle-container">
-        <button id="view-toggle-btn" class="toggle-btn">In ontwikkeling / Ideeën</button>
     </div>
 
     <div id="filter-container" class="filter-container">
@@ -33,6 +29,11 @@
     </main>
 
     <footer>
+        <div class="footer-disclaimer">
+            Veel van deze tools werden ontwikkeld m.b.v. GenAI door mij persoonlijk.<br>
+            Ik maak deze tools voor eigen gebruik en ze blijken ook nuttig voor mijn werk bij de AP Hogeschool,
+            maar ze werden niet door AP ontwikkeld.
+        </div>
         &copy; <span id="year"></span> Tim Dams. All rights reserved.
     </footer>
 
@@ -61,29 +62,16 @@
                     renderTools();
                 }
 
-                let allTags = new Set();
+                // Collect non-first tags for filters
+                let filterTags = new Set();
                 tools.forEach(tool => {
-                    if (tool.tags) {
-                        tool.tags.forEach(tag => allTags.add(tag));
+                    if (tool.tags && tool.tags.length > 1) {
+                        tool.tags.slice(1).forEach(tag => filterTags.add(tag));
                     }
                 });
 
                 let selectedTags = new Set();
-                let showAlfa = false;
                 let showFavoritesOnly = false;
-
-                const viewToggleBtn = document.getElementById('view-toggle-btn');
-                viewToggleBtn.onclick = () => {
-                    showAlfa = !showAlfa;
-                    if (showAlfa) {
-                        viewToggleBtn.classList.add('active');
-                        viewToggleBtn.textContent = 'Toon Klare / Beta Tools';
-                    } else {
-                        viewToggleBtn.classList.remove('active');
-                        viewToggleBtn.textContent = 'In ontwikkeling / Ideeën';
-                    }
-                    renderTools();
-                };
 
                 // Add Favorites Filter
                 const favFilterBtn = document.createElement('button');
@@ -97,8 +85,8 @@
                 };
                 filterContainer.appendChild(favFilterBtn);
 
-                // Render filters
-                allTags.forEach(tag => {
+                // Render filter buttons (non-first tags only, first tags are category headings)
+                filterTags.forEach(tag => {
                     const filterBtn = document.createElement('button');
                     filterBtn.className = 'filter-btn';
                     filterBtn.textContent = tag;
@@ -118,92 +106,103 @@
                 function renderTools() {
                     container.innerHTML = '';
 
-                    const statusPriority = {
-                        'klaar': 1,
-                        'beta': 2,
-                        'experimenteel': 3
-                    };
-
+                    // Filter
                     const filteredTools = tools.filter(tool => {
                         if (showFavoritesOnly && !favorites.includes(tool.name)) return false;
-
-                        const isAlfa = (tool.status || '').toLowerCase() === 'alfa';
-                        if (showAlfa && !isAlfa) return false;
-                        if (!showAlfa && isAlfa) return false;
-
                         if (selectedTags.size === 0) return true;
                         if (!tool.tags) return false;
-
                         return Array.from(selectedTags).some(tag => tool.tags.includes(tag));
-                    }).sort((a, b) => {
-                        // Priority for favorites
-                        const isFavA = favorites.includes(a.name);
-                        const isFavB = favorites.includes(b.name);
-                        if (isFavA && !isFavB) return -1;
-                        if (!isFavA && isFavB) return 1;
-
-                        const priorityA = statusPriority[(a.status || '').toLowerCase()] || 99;
-                        const priorityB = statusPriority[(b.status || '').toLowerCase()] || 99;
-                        return priorityA - priorityB;
                     });
 
+                    // Group by first tag (main category)
+                    const categories = new Map();
                     filteredTools.forEach(tool => {
-                        const card = document.createElement('a');
-                        card.className = 'card';
-                        card.href = tool.url;
-
-                        if (tool.url && !tool.url.startsWith('#')) {
-                            card.target = "_blank";
-                            card.rel = "noopener noreferrer";
-                        }
-
-                        let tagsHtml = '';
-                        if (tool.tags && tool.tags.length > 0) {
-                            tagsHtml = `<div class="tags">
-                                ${tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                            </div>`;
-                        }
-
-                        let statusHtml = '';
-                        if (tool.status) {
-                            statusHtml = `<span class="status-badge status-${tool.status.toLowerCase()}">${tool.status}</span>`;
-                        }
-
-                        const isFav = favorites.includes(tool.name);
-
-                        card.innerHTML = `
-                            <div class="card-header">
-                                <div class="card-title">${tool.name}</div>
-                                <button class="fav-btn ${isFav ? 'active' : ''}" title="Boekmarken">
-                                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                </button>
-                            </div>
-                            <div class="card-desc">${tool.description}</div>
-                            <div style="display:flex; justify-content: space-between; align-items: flex-end; margin-top: auto;">
-                                ${tagsHtml}
-                                ${statusHtml}
-                            </div>
-                        `;
-
-                        // Handle favorite click
-                        const favBtn = card.querySelector('.fav-btn');
-                        favBtn.onclick = (e) => toggleFavorite(tool.name, e);
-
-                        container.appendChild(card);
+                        const cat = (tool.tags && tool.tags.length > 0) ? tool.tags[0] : 'Overig';
+                        if (!categories.has(cat)) categories.set(cat, []);
+                        categories.get(cat).push(tool);
                     });
 
-                    if (filteredTools.length === 0) {
-                        container.innerHTML = `<p style="text-align:center; width:100%; grid-column: 1 / -1;">
+                    // Sort within each category: favorites first, then alfa last
+                    categories.forEach(catTools => {
+                        catTools.sort((a, b) => {
+                            const isFavA = favorites.includes(a.name);
+                            const isFavB = favorites.includes(b.name);
+                            if (isFavA && !isFavB) return -1;
+                            if (!isFavA && isFavB) return 1;
+
+                            const isAlfaA = (a.status || '').toLowerCase() === 'alfa';
+                            const isAlfaB = (b.status || '').toLowerCase() === 'alfa';
+                            if (isAlfaA && !isAlfaB) return 1;
+                            if (!isAlfaA && isAlfaB) return -1;
+                            return 0;
+                        });
+                    });
+
+                    if (categories.size === 0) {
+                        container.innerHTML = `<p class="empty-msg">
                             ${showFavoritesOnly ? 'Geen favorieten gevonden.' : 'Geen tools gevonden met de geselecteerde filters.'}
                         </p>`;
+                        return;
                     }
+
+                    // Render each category section
+                    categories.forEach((catTools, category) => {
+                        const section = document.createElement('section');
+                        section.className = 'category-section';
+
+                        const heading = document.createElement('h2');
+                        heading.className = 'category-heading';
+                        heading.textContent = category;
+                        section.appendChild(heading);
+
+                        catTools.forEach(tool => {
+                            const isAlfa = (tool.status || '').toLowerCase() === 'alfa';
+                            const item = document.createElement('a');
+                            item.className = 'tool-item' + (isAlfa ? ' tool-item--alfa' : '');
+                            item.href = tool.url;
+
+                            if (tool.url && !tool.url.startsWith('#')) {
+                                item.target = "_blank";
+                                item.rel = "noopener noreferrer";
+                            }
+
+                            const isFav = favorites.includes(tool.name);
+
+                            // Tags excluding the first one (it's the category heading)
+                            const remainingTags = (tool.tags && tool.tags.length > 1) ? tool.tags.slice(1) : [];
+                            const tagsHtml = remainingTags
+                                .map(t => `<span class="tool-item-tag">${t}</span>`)
+                                .join('<span class="tool-item-tag-sep">&middot;</span>');
+
+                            const alfaBadge = isAlfa ? '<span class="alfa-badge">In ontwikkeling</span>' : '';
+
+                            item.innerHTML = `
+                                <div class="tool-item-header">
+                                    <span class="tool-item-title">${tool.name}</span>
+                                    ${alfaBadge}
+                                    <button class="fav-btn ${isFav ? 'active' : ''}" title="Boekmarken">
+                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    </button>
+                                </div>
+                                <div class="tool-item-desc">${tool.description}</div>
+                                ${tagsHtml ? `<div class="tool-item-meta">${tagsHtml}</div>` : ''}
+                            `;
+
+                            const favBtn = item.querySelector('.fav-btn');
+                            favBtn.onclick = (e) => toggleFavorite(tool.name, e);
+
+                            section.appendChild(item);
+                        });
+
+                        container.appendChild(section);
+                    });
                 }
 
                 renderTools();
             } catch (error) {
                 console.error('Error loading tools:', error);
                 document.getElementById('tools-container').innerHTML =
-                    '<p style="text-align:center; width:100%; grid-column: 1 / -1;">Kon tools niet laden.</p>';
+                    '<p class="empty-msg">Kon tools niet laden.</p>';
             }
         }
 

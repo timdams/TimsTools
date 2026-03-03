@@ -1,23 +1,12 @@
 [
   {
-    "name": "📚 MassBijlageDownloader",
-    "description": "Browser extensie om snel alle bijlagen bij een (moodle/toets.ap)-examenvrag te downloaden en hernoemen.",
-    "url": "tool.html?file=projects/massbijlagedownloader.md",
+    "name": "🔎 Examonbrowser (aka Timspector 2026)",
+    "description": "Examon WPF browser tool voor geavanceerde analyse en beheer en rapportage",
+    "url": "tool.html?file=projects/examonbrowser.md",
     "tags": [
-      "Moodle",
-      "Chrome Extension",
-      "AP"
-    ],
-    "status": "Klaar"
-  },
-  {
-    "name": "🔢 iBamaflexPuntenImporter",
-    "description": "Browser extensie om snel je punten vanuit een excel in je ibamaflex puntenlijst te importeren.",
-    "url": "tool.html?file=projects/ibamaflexpuntenimporter.md",
-    "tags": [
-      "Ibamaflex",
-      "Chrome Extension",
-      "AP"
+      "AP",
+      "Examon",
+      "WPF"
     ],
     "status": "klaar"
   },
@@ -26,20 +15,42 @@
     "description": "Je untis rooster on steroids. Een snellere manier om roosters te bekijken, lessen herin te plannen en te zoeken wat een goed moment is voor een meeting.",
     "url": "tool.html?file=projects/untisbrowser.md",
     "tags": [
+      "AP",
       "Untis",
-      "WPF",
-      "AP"
+      "WPF"
     ],
     "status": "klaar"
   },
   {
-    "name": "🔎 Examonbrowser (aka Timspector 2026)",
-    "description": "Examon WPF browser tool voor geavanceerde analyse en beheer en rapportage",
-    "url": "tool.html?file=projects/examonbrowser.md",
+    "name": "📚 MassBijlageDownloader",
+    "description": "Browser extensie om snel alle bijlagen bij een (moodle/toets.ap)-examenvrag te downloaden en hernoemen.",
+    "url": "tool.html?file=projects/massbijlagedownloader.md",
     "tags": [
-      "Examon",
-      "WPF",
-      "AP"
+      "AP",
+      "Moodle",
+      "Chrome Extension"
+    ],
+    "status": "Klaar"
+  },
+  {
+    "name": "🔢 iBamaflexPuntenImporter",
+    "description": "Browser extensie om snel je punten vanuit een excel in je ibamaflex puntenlijst te importeren.",
+    "url": "tool.html?file=projects/ibamaflexpuntenimporter.md",
+    "tags": [
+      "AP",
+      "Ibamaflex",
+      "Chrome Extension"
+    ],
+    "status": "klaar"
+  },
+  {
+    "name": "🏫 Examenvoorstel rooster visualizer",
+    "description": "Webapp om de examenrooster excel te visualiseren.",
+    "url": "tool.html?file=projects/examenvoorstel-rooster-visualizer.md",
+    "tags": [
+      "AP",
+      "Untis",
+      "Webapp"
     ],
     "status": "klaar"
   },
@@ -48,8 +59,8 @@
     "description": "Javascript code voor een essay vraag in Toets.AP of Moodle met een live woordenteller.",
     "url": "tool.html?file=scripttools/wordcounter%20in%20toets.md",
     "tags": [
-      "Moodle",
       "AP",
+      "Moodle",
       "Snippet"
     ],
     "status": "klaar"
@@ -59,20 +70,9 @@
     "description": "HTML snippet voor een kladblok veld waarbij de inhoud niet wordt bewaard.",
     "url": "tool.html?file=scripttools/tekstblok%20in%20toets.md",
     "tags": [
-      "Moodle",
       "AP",
+      "Moodle",
       "Snippet"
-    ],
-    "status": "klaar"
-  },
-  {
-    "name": "🏫 Examenvoorstel rooster visualizer",
-    "description": "Webapp om de examenrooster excel te visualiseren.",
-    "url": "tool.html?file=projects/examenvoorstel-rooster-visualizer.md",
-    "tags": [
-      "Untis",
-      "Webapp",
-      "AP"
     ],
     "status": "klaar"
   },
@@ -81,9 +81,9 @@
     "description": "Chrome extensie die je hebt om een toets.ap.be test automatisch klaar te zetten",
     "url": "tool.html?file=inontwikkeling/toetsprepper.md",
     "tags": [
+      "AP",
       "Moodle",
-      "Chrome Extension",
-      "AP"
+      "Chrome Extension"
     ],
     "status": "alfa"
   },
@@ -92,9 +92,9 @@
     "description": "Een Windows-desktopapplicatie om trajectgesprekken te capteren, verwerken en samenvatten",
     "url": "tool.html?file=inontwikkeling/tbgesprakcapture.md",
     "tags": [
+      "AP",
       "AI",
-      "WPF",
-      "AP"
+      "WPF"
     ],
     "status": "alfa"
   },
@@ -103,8 +103,8 @@
     "description": "Een interactief online leerplatform voor C# met gamification-elementen.",
     "url": "tool.html?file=inontwikkeling/ziescherpst.md",
     "tags": [
-      "Webapp",
-      "AP"
+      "AP",
+      "Webapp"
     ],
     "status": "alfa"
   },
@@ -113,8 +113,8 @@
     "description": "Oude applicatie om te onderzoeken of je toets betrouwbaar is.",
     "url": "tool.html?file=projects/toetstester.md",
     "tags": [
-      "WPF",
-      "AP"
+      "AP",
+      "WPF"
     ],
     "status": "klaar"
   },
@@ -123,8 +123,8 @@
     "description": "Applicatie om EPC/SEPA betaalketen QR-codes te genereren,al dan niet in bulk.",
     "url": "tool.html?file=projects/bulk-epc-generator.md",
     "tags": [
-      "WPF",
-      "Prive"
+      "Prive",
+      "WPF"
     ],
     "status": "klaar"
   }

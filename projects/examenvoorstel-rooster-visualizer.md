@@ -6,3 +6,5 @@
 </div>
 
 Een handige webapplicatie om de examenrooster Excel-bestanden visueel weer te geven. Na het inladen van de Excel kun je eenvoudig filteren op specifieke klassen, collega's of lokalen om meteen een duidelijk overzicht van de geplande examens te krijgen.
+
+![](./projects/roosvis.png)

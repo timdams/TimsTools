@@ -126,7 +126,7 @@ h1 {
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 1200px;
+  max-width: 900px;
   width: 100%;
   padding: 0 2rem;
   margin-bottom: 1rem;
@@ -164,11 +164,10 @@ h1 {
 
 main {
   width: 100%;
-  max-width: 1200px;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 0.75rem;
+  max-width: 900px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
@@ -326,12 +325,141 @@ main {
   border-color: rgba(56, 189, 248, 0.2);
 }
 
+/* === Grouped list layout === */
+
+.category-section {
+  width: 100%;
+  margin-bottom: 1.75rem;
+}
+
+.category-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+  font-weight: 600;
+}
+
+.tool-item {
+  display: block;
+  padding: 0.6rem 1rem 0.6rem 1.25rem;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tool-item:last-child {
+  border-bottom: none;
+}
+
+.tool-item:hover {
+  border-left-color: var(--primary-color);
+  background: rgba(56, 189, 248, 0.04);
+  padding-left: 1.5rem;
+}
+
+.tool-item--alfa {
+  border-left: 3px dashed var(--status-alfa);
+  opacity: 0.55;
+}
+
+.tool-item--alfa:hover {
+  border-left-color: var(--status-alfa);
+  opacity: 0.9;
+  background: rgba(192, 132, 252, 0.04);
+}
+
+.tool-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tool-item-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.tool-item-desc {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-top: 0.1rem;
+  line-height: 1.4;
+}
+
+.tool-item-meta {
+  display: flex;
+  gap: 0.15rem;
+  align-items: center;
+  margin-top: 0.2rem;
+}
+
+.tool-item-tag {
+  font-size: 0.7rem;
+  color: #475569;
+  letter-spacing: 0.02em;
+}
+
+.tool-item-tag-sep {
+  font-size: 0.55rem;
+  color: #334155;
+  margin: 0 0.2rem;
+}
+
+.alfa-badge {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--status-alfa);
+  border: 1px dashed rgba(192, 132, 252, 0.4);
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tool-item .fav-btn {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.tool-item .fav-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.empty-msg {
+  text-align: center;
+  color: #64748b;
+  padding: 2rem;
+  width: 100%;
+}
+
 footer {
   margin-top: auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
   color: #64748b;
   font-size: 0.9rem;
   text-align: center;
+  border-top: 1px solid var(--card-border);
+  width: 100%;
+  max-width: 900px;
+}
+
+.footer-disclaimer {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  opacity: 0.7;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .tool-content-container {
@@ -433,11 +561,15 @@ footer {
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   main {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .tool-item {
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
   }
 
   .card {

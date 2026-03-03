@@ -6,3 +6,5 @@
 </div>
 
 Deze Chrome extensie helpt docenten om snel alle ingediende bestanden (zip, pdf, docx, ...) van een toets of opdracht te downloaden van toets.ap.be en digitap.ap.be. De bestanden worden bovendien automatisch hernoemd naar het handige formaat `Achternaam Voornaam_Bestandsnaam.ext`.
+
+![Main View](./projects/bulk.png)
