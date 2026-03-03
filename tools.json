@@ -22,6 +22,17 @@
     "status": "klaar"
   },
   {
+    "name": "🗓️ Meetingplanner Online",
+    "description": "Online form om snel te te kijken wat geschikte moment is om met collega's en klasgroepen samen te zitten, gebaseerd op hun untis rooster",
+    "url": "tool.html?file=projects/meetingplanner.md",
+    "tags": [
+      "AP",
+      "Untis",
+      "Webapp"
+    ],
+    "status": "klaar"
+  },
+  {
     "name": "📚 MassBijlageDownloader",
     "description": "Browser extensie om snel alle bijlagen bij een (moodle/toets.ap)-examenvrag te downloaden en hernoemen.",
     "url": "tool.html?file=projects/massbijlagedownloader.md",
