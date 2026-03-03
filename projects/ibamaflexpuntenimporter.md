@@ -5,4 +5,4 @@
     </a>
 </div>
 
-*Meer informatie over dit project wordt later toegevoegd.*
+Een handige tool en browser extensie om puntenlijsten vanuit een Excel-bestand automatisch in te laden en te matchen in iBaMaFlex. Dit bespaart veel tijd bij het overzetten van resultaten.

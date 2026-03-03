@@ -5,4 +5,4 @@
     </a>
 </div>
 
-*Meer informatie over dit project wordt later toegevoegd.*
+Een Windows WPF programma dat oorspronkelijk is ontwikkeld door de AP Hogeschool om de betrouwbaarheid van een toets te onderzoeken. Je kunt er resultaten mee analyseren en evalueren.

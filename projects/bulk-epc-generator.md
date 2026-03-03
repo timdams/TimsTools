@@ -5,4 +5,7 @@
     </a>
 </div>
 
-*Meer informatie over dit project wordt later toegevoegd.*
+Een Desktop WPF (.NET 9) applicatie ontworpen om EPC/SEPA betaalketen QR-codes in bulk of per stuk te genereren vanuit een tekstbestand. De gegenereerde QR codes bevatten extra transactie-informatie die duidelijk onder de code wordt geplaatst, ideaal voor facturatie.
+
+## Screenshots
+![Demo](https://raw.githubusercontent.com/timdams/BulkEPC-QRcodegenerator/master/dem.png)
