@@ -1,12 +1,12 @@
 [
   {
     "name": "🔎 Examonbrowser (aka Timspector 2026)",
-    "description": "Examon WPF browser tool voor geavanceerde analyse en beheer en rapportage",
+    "description": "Examon Windows App browser tool voor geavanceerde analyse en beheer en rapportage",
     "url": "tool.html?file=projects/examonbrowser.md",
     "tags": [
       "AP",
       "Examon",
-      "WPF"
+      "Windows App"
     ],
     "status": "klaar"
   },
@@ -17,7 +17,7 @@
     "tags": [
       "AP",
       "Untis",
-      "WPF"
+      "Windows App"
     ],
     "status": "klaar"
   },
@@ -88,6 +88,15 @@
     "status": "klaar"
   },
   {
+    "name": "🤓 Zie Scherp Companion tool",
+    "description": "Code analyzer en feedback tool voor C# code",
+    "url": "tool.html?file=inontwikkeling/ziescherpcompanion.md",
+    "tags": [
+      "AP"
+    ],
+    "status": "alfa"
+  },
+  {
     "name": "🤖 Toetsprepper",
     "description": "Chrome extensie die je hebt om een toets.ap.be test automatisch klaar te zetten",
     "url": "tool.html?file=inontwikkeling/toetsprepper.md",
@@ -105,7 +114,7 @@
     "tags": [
       "AP",
       "AI",
-      "WPF"
+      "Windows App"
     ],
     "status": "alfa"
   },
@@ -125,7 +134,7 @@
     "url": "tool.html?file=projects/toetstester.md",
     "tags": [
       "AP",
-      "WPF"
+      "Windows App"
     ],
     "status": "klaar"
   },
@@ -135,7 +144,7 @@
     "url": "tool.html?file=projects/bulk-epc-generator.md",
     "tags": [
       "Prive",
-      "WPF"
+      "Windows App"
     ],
     "status": "klaar"
   }
