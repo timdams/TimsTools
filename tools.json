@@ -88,6 +88,17 @@
     "status": "klaar"
   },
   {
+    "name": "🤓 PDT Trajectplanner",
+    "description": "Tool om optimale PDT-roosters als trajectbegeleider op te stellen tijdens de PDT dagen",
+    "url": "tool.html?file=inontwikkeling/tbpdtplanner.md",
+    "tags": [
+      "AP",
+      "Webapp",
+      "Untis"
+    ],
+    "status": "alfa"
+  },
+  {
     "name": "🤓 Zie Scherp Companion tool",
     "description": "Code analyzer en feedback tool voor C# code",
     "url": "tool.html?file=inontwikkeling/ziescherpcompanion.md",
