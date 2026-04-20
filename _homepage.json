@@ -1,0 +1,43 @@
+{
+  "name": "TimsTools",
+  "tech": "JavaScript",
+  "techDetail": "HTML / CSS / JavaScript",
+  "branch": "master",
+  "lastCommit": "2026-03-11",
+  "lastCommitMsg": "pdt planner inc",
+  "lastCommitHash": "b76651e",
+  "hasGit": true,
+  "remote": "https://github.com/timdams/TimsTools",
+  "tag": null,
+  "recentCommits": [
+    {
+      "hash": "b76651e",
+      "msg": "pdt planner inc"
+    },
+    {
+      "hash": "67113a7",
+      "msg": "ziescherpcompanion"
+    },
+    {
+      "hash": "f5e2d98",
+      "msg": "meetingplanner link"
+    },
+    {
+      "hash": "f44c4ee",
+      "msg": "meetingplanner"
+    },
+    {
+      "hash": "9ca83bf",
+      "msg": "Merge branch 'master' of https://github.com/timdams/TimsTools"
+    }
+  ],
+  "workspace": null,
+  "noteFiles": [],
+  "path": "TimsTools",
+  "desc": "[timdams.github.io/TimsTools/](https://timdams.github.io/TimsTools/)",
+  "category": "Overig",
+  "status": "active",
+  "tags": [],
+  "aiSummary": null,
+  "customNotes": null
+}
