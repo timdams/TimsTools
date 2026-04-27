@@ -44,13 +44,13 @@ body {
 
 header {
   text-align: center;
-  padding: 2rem 1rem 1rem;
+  padding: 2.5rem 1rem 1.25rem;
   width: 100%;
   max-width: 1200px;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
@@ -61,7 +61,7 @@ h1 {
 }
 
 .subtitle {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #94a3b8;
   font-weight: 300;
 }
@@ -90,6 +90,129 @@ h1 {
 
 .disclaimer strong {
   color: var(--primary-color);
+}
+
+/* === External links section (blog & cursussen) === */
+
+.external-links {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 2rem;
+  margin: 0 auto 2.5rem;
+}
+
+.external-links-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--secondary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(129, 140, 248, 0.2);
+  font-weight: 600;
+  text-align: left;
+}
+
+.external-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.ext-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ext-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+  opacity: 0.6;
+  transition: opacity 0.25s ease;
+}
+
+.ext-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 10px 30px -10px var(--glow-color);
+}
+
+.ext-card:hover::before {
+  opacity: 1;
+}
+
+.ext-card--blog::before {
+  background: linear-gradient(180deg, #fbbf24, #f97316);
+}
+
+.ext-card--blog:hover {
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(251, 191, 36, 0.25);
+}
+
+.ext-card-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.ext-card-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ext-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 0.15rem;
+}
+
+.ext-card-desc {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.35;
+}
+
+.ext-card-url {
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: 0.35rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tools-section-heading-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 2rem;
+  margin: 0 auto 1rem;
+}
+
+@media (max-width: 600px) {
+  .tools-section-heading-wrapper {
+    padding: 0 1rem;
+  }
 }
 
 .toggle-btn {
@@ -126,7 +249,7 @@ h1 {
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 900px;
+  max-width: 1100px;
   width: 100%;
   padding: 0 2rem;
   margin-bottom: 1rem;
@@ -164,7 +287,7 @@ h1 {
 
 main {
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
@@ -449,7 +572,7 @@ footer {
   text-align: center;
   border-top: 1px solid var(--card-border);
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
 }
 
 .footer-disclaimer {
@@ -561,7 +684,7 @@ footer {
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   main {
@@ -574,5 +697,17 @@ footer {
 
   .card {
     padding: 1.25rem 1.5rem;
+  }
+
+  .external-links {
+    padding: 0 1rem;
+  }
+
+  .ext-card {
+    padding: 0.85rem 1rem;
+  }
+
+  .ext-card-icon {
+    font-size: 1.6rem;
   }
 }
