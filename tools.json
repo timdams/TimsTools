@@ -44,6 +44,17 @@
     "status": "Klaar"
   },
   {
+    "name": "📚 ECTS Fixer",
+    "description": "Plugin die ects.ap.be wat pimp'd: default academiejaar veranderen + open in new tab icons overal.",
+    "url": "tool.html?file=projects/ectsfixer.md",
+    "tags": [
+      "AP",
+      "Moodle",
+      "Chrome Extension"
+    ],
+    "status": "Klaar"
+  },
+  {
     "name": "🔢 iBamaflexPuntenImporter",
     "description": "Browser extensie om snel je punten vanuit een excel in je ibamaflex puntenlijst te importeren.",
     "url": "tool.html?file=projects/ibamaflexpuntenimporter.md",
