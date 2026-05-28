@@ -3,13 +3,21 @@
   "tech": "JavaScript",
   "techDetail": "HTML / CSS / JavaScript",
   "branch": "master",
-  "lastCommit": "2026-04-20",
-  "lastCommitMsg": "foodsup",
-  "lastCommitHash": "aed87b4",
+  "lastCommit": "2026-04-28",
+  "lastCommitMsg": "ectsfixer",
+  "lastCommitHash": "b8baef5",
   "hasGit": true,
   "remote": "https://github.com/timdams/TimsTools",
   "tag": null,
   "recentCommits": [
+    {
+      "hash": "b8baef5",
+      "msg": "ectsfixer"
+    },
+    {
+      "hash": "f363ff2",
+      "msg": "blog"
+    },
     {
       "hash": "aed87b4",
       "msg": "foodsup"
@@ -21,14 +29,6 @@
     {
       "hash": "67113a7",
       "msg": "ziescherpcompanion"
-    },
-    {
-      "hash": "f5e2d98",
-      "msg": "meetingplanner link"
-    },
-    {
-      "hash": "f44c4ee",
-      "msg": "meetingplanner"
     }
   ],
   "workspace": null,

@@ -33,8 +33,8 @@
     "status": "klaar"
   },
   {
-    "name": "📚 MassBijlageDownloader",
-    "description": "Browser extensie om snel alle bijlagen bij een (moodle/toets.ap)-examenvrag te downloaden en hernoemen.",
+    "name": "📚 MassBijlageDownloader & massgroepcreator",
+    "description": "Browser extensie om snel alle bijlagen bij een (moodle/toets.ap)-examenvrag te downloaden en hernoemen. Alsook de mogelijkheid om snel een nieuwe groep aan te maken aan de hand van een lijst (bv inda's)",
     "url": "tool.html?file=projects/massbijlagedownloader.md",
     "tags": [
       "AP",
