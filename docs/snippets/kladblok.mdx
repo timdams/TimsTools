@@ -1,0 +1,46 @@
+---
+title: "📝 Kladblok bij toetsvragen"
+sidebar_label: "📝 Kladblok"
+sidebar_position: 2
+description: HTML-snippet voor een kladblokveld waarbij de inhoud niet wordt bewaard.
+tags: [AP, Moodle, Snippet]
+---
+
+HTML-snippet voor een kladblokveld bij een toetsvraag, waarbij de inhoud **niet** wordt bewaard.
+
+:::caution Opgelet
+Als de student naar een andere vraag gaat of de pagina refresht, wordt de inhoud
+van dit tekstveld verwijderd. Zet er dus zeker een duidelijke waarschuwing bij als
+je dit gebruikt.
+:::
+
+Je plakt deze HTML in je vraagtekst (zet je editor uiteraard in "code"-modus):
+
+```html
+<div class="scratchpad-container" style="margin-top:1em;">
+    <label style="font-weight:bold;">
+        Kladberekeningen (wordt niet opgeslagen!)
+    </label>
+    <textarea rows="6" style="width:100%; font-family:monospace;" placeholder="Gebruik dit veld voor je berekeningen.
+Let op: dit wordt NIET opgeslagen."></textarea>
+    <div style="font-size:0.8em; color:#a00; margin-top:0.3em;">
+        ⚠️ OPGELET: Dit kladveld wordt niet bewaard bij verzenden of herladen. Van zodra je dus naar andere vraag gaat ben je de zaken die hier staan kwijt.
+    </div>
+</div>
+```
+
+## Voorbeeld
+
+Zo zal dit eruitzien:
+
+<div style={{marginTop: '1em'}}>
+  <label style={{fontWeight: 'bold'}}>Kladberekeningen (wordt niet opgeslagen!)</label>
+  <textarea
+    rows={6}
+    style={{width: '100%', fontFamily: 'monospace', display: 'block', marginTop: '0.3em'}}
+    placeholder={'Gebruik dit veld voor je berekeningen.\nLet op: dit wordt NIET opgeslagen.'}
+  />
+  <div style={{fontSize: '0.8em', color: '#a00', marginTop: '0.3em'}}>
+    ⚠️ OPGELET: Dit kladveld wordt niet bewaard bij verzenden of herladen. Van zodra je dus naar een andere vraag gaat, ben je de zaken die hier staan kwijt.
+  </div>
+</div>
