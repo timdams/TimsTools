@@ -8,6 +8,14 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  /* Verloop in het AP-rood (#FF0000 -> #B30000) i.p.v. een vlakke kleur. */
+  background: linear-gradient(135deg, #ff0000 0%, #b30000 100%);
+  color: #ffffff;
+}
+
+/* De h1-titel erft anders de donkere --ifm-heading-color; forceer wit. */
+.heroBanner :global(.hero__title) {
+  color: #ffffff;
 }
 
 @media screen and (max-width: 996px) {
